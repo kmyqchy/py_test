@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "analytics-shein",
+  "private_key_id": "d1b33d52213e75db7d832ce17a43d4089b833c1d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDW1Rb3iBI1dtyv\nHEHbEOL4DqyF2SGVqXMAERajXqg6PL9AweDevuvxpE1UvrAS9r0QcDmm2W/jetYb\n2vJl3TWZaOECpJgmznVI2yg+lyAyLjA3RiEDhMMgabcP4ljiyKuFxbUZ7k84SSBt\n1dPe+phkY/E3A47L9w4EXaZq/IlyQWEvpbsxcsHRHm+/wZQJad7PX6U4UL3VGge6\nWnZ8Ialud1zWzdluerNvJ7Pcld015wpfUXYjI2M0EVmqy9Y4AJm5BxNMgoaaN6GP\nMCmZ4lPacSJgTT/0JkD+OjQmPnq37kvScehIKyolcbrIUuPs6C5JAF17n0e2k0oI\nYmBv5To7AgMBAAECggEABnHSBI7ybOQp7p7cYuP4yxQ1nLZMyZ6RspjQown95fFY\nk2q9gjEcBt207CvkQE1ikpGrSRQQxTQ0JBXHW8LtDrMUvO2PGurqncrlRCtobdjw\n3VefOenLqLdDJJjXrcXzT0oFCsgZXEjlTiYx+uhtleVhoRLcP8Yjh4H/sgntXZ4G\nZmTmsunagJLHvmiZI0h7qYTcdW4GYI+tlUiNWt4fzQ2SriVzo4ia9F+qANeAX1wN\n6evWaRWYKxo0e2ebN2idX2K4zRT6sDMdyLA1O9wV6uf9b+OnCxiUwewx2VhMQwdH\n95M02wT0oAj+05aKpEzVdnKhrtEBflnT2Vz958BPAQKBgQDyWAhEc3f+zbZFnx0O\nsT96BD6Om9hk9U9Nq/FID1X0F6uCqfCX/m66wcAm+6a0JL4dB5319JyTDShpVBTO\nSIad16hbZGxEVCiANzEvYSXKRN5UwSit4f9t9yfqMZErRHNco0eDUTYfMAoDLf6i\nzzhwvrmmxyixnPvdFSLKLMU/QQKBgQDi8C+uf2eySlYnXlHDmhpicwlkcOpwfyqL\nkzYN8nZ2KZA/x0fMYKZXWGy1synb3lIrU9PAIHaA5DEhnDzPSmM5mgAosnewR+hU\nJwlnl57gssDaqKMETQ6fqGmPz2qxMvQp7eft64Xi+/cZtTxD3v3mQqV+APBtCUXi\nxMhoEeBWewKBgDj3AnJ8pe8qEbdJ0H28okwfJUlGTtZkZ1C9owiqOi0XR0R+h8Ri\nlUqm8nD3ZFch7+JJARNofUl/pUkk74MRvzrpD3T0JRLmqWKCFripYEWsbIqFoPdG\nkVEa8LH3FsWR4IAdDVlLxKoOE7xtmlZQ2VZ/LoqKdAFUAkwUhMn7Ph5BAoGATTyT\n7d7cyxhzxAhc6aasLi+a1b18fPc64rAiqJKJ8ONqfdp0PEH0uyuULC8jIvrCmo54\nNh6WVn3Tnu3O4Hof1T3tqew7whpnHyT+FWzMHQuZiZH1kYQsYvhtnQ1p8Y82/IJE\n+nu7YKqCyhQdw7fEUDcEniLxsRqD149D6e+Tm7sCgYA1B84BN5uz5C6UnSUhg9Xv\nH8C/2HxgGV7DHxFE4hTlLq06AVm3bhoXpDN7iFAgPFtqeMz7ConqijkeAjHXM8/R\nnAI73B3wV0eWV5c2RL5EFJmd3ZjBqRdDJsQji5qiLFWIHWpvbFjx//R55Xk/ioGS\nLkrl8PEjvb4JxS2gtEIkGg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "analytics-shein@analytics-shein.iam.gserviceaccount.com",
+  "client_id": "111302282348150494320",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/analytics-shein%40analytics-shein.iam.gserviceaccount.com"
+}
