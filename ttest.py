@@ -30,11 +30,12 @@ class conrequest:
         
         for k,v in response.getheaders():
             print(k,'=',v)
-
+    def login(self):
+        data = {'source':'None','redir':self.url,'form_email':'user','form_password':'passwd',''}
 '''X=conrequest('https://www.google.com')
 X.con()
 '''
-
+    
 
 
 
