@@ -10,10 +10,31 @@ from oauth2client import tools
 
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
 DISCOVERY_URI = ('https://analyticsreporting.googleapis.com/$discovery/rest')
-CLIENT_SECRETS_PATH = 'client_secrets.json'
+CLIENT_SECRETS_PATH = 'c:\\client_secrets.json'
 # Path to client_secrets.json file.
-VIEW_ID = "158888435"
+VIEW_ID = '125411210'
 
+def get_report(analytics):
+# Use the Analytics Service Object to query the Analytics Reporting API V4.
+  return analytics.reports().batchGet(
+      body={
+         "reportRequests":
+          [
+            {
+              "viewId": VIEW_ID,
+              "dateRanges":
+              [{"startDate": "2018-08-27",
+                  "endDate": "2018-08-29"}],
+              "metrics":
+              [{"expression": "ga:users"}],
+              "dimensions":
+              [{"name": "ga:browser"}],
+              
+            }
+          ]
+
+      }
+  ).execute()
     
 def initialize_analyticsreporting():
   """Initializes the analyticsreporting service object.
@@ -27,39 +48,28 @@ def initialize_analyticsreporting():
       parents=[tools.argparser])
   flags = parser.parse_args([])
 
-  # Set up a Flow object to be used if we need to authenticate.
+# Set up a Flow object to be used if we need to authenticate.
   flow = client.flow_from_clientsecrets(
       CLIENT_SECRETS_PATH, scope=SCOPES,
       message=tools.message_if_missing(CLIENT_SECRETS_PATH))
 
-  # Prepare credentials, and authorize HTTP object with them.
-  # If the credentials don't exist or are invalid run through the native client
-  # flow. The Storage object will ensure that if successful the good
-  # credentials will get written back to a file.
+# Prepare credentials, and authorize HTTP object with them.
+# If the credentials don't exist or are invalid run through the native client
+# flow. The Storage object will ensure that if successful the good
+# credentials will get written back to a file.
   storage = file.Storage('analyticsreporting.dat')
   credentials = storage.get()
   if credentials is None or credentials.invalid:
     credentials = tools.run_flow(flow, storage, flags)
   http = credentials.authorize(http=httplib2.Http())
 
-  # Build the service object.
+# Build the service object.
   analytics = build('analytics', 'v4', http=http, discoveryServiceUrl=DISCOVERY_URI)
 
   return analytics
 
 
-def get_report(analytics):
-  # Use the Analytics Service Object to query the Analytics Reporting API V4.
-  return analytics.reports().batchGet(
-      body={
-        'reportRequests': [
-        {
-          'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'yesterday'}],
-          'metrics': [{'expression': 'ga:sessions'}]
-        }]
-      }
-  ).execute()
+
 
 
 def print_response(response):
@@ -76,13 +86,13 @@ def print_response(response):
       dateRangeValues = row.get('metrics', [])
 
       for header, dimension in zip(dimensionHeaders, dimensions):
-        print (header + ': ' + dimension)
+        print (header + ',' + dimension)
 
       for i, values in enumerate(dateRangeValues):
-        print ('Date range (' + str(i) + ')')
+        #print ('Date range (' + str(i) + ')')
         for metricHeader, value in zip(metricHeaders, values.get('values')):
-          print (metricHeader.get('name') + ': ' + value)
-
+          print (metricHeader.get('name') + ',' + value)
+    #return header,dimension,metricHeader.get('name'),value
 
 def main():
 
