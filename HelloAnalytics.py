@@ -1,47 +1,59 @@
 """Hello Analytics Reporting API V4."""
-#config utf-8
+# -- coding: utf-8 --
 import argparse
-
+import datetime
 from apiclient.discovery import build
 import httplib2
 from oauth2client import client
 from oauth2client import file
 from oauth2client import tools
+from _datetime import date
 
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
 DISCOVERY_URI = ('https://analyticsreporting.googleapis.com/$discovery/rest')
 CLIENT_SECRETS_PATH = 'c:\\client_secrets.json'
 # Path to client_secrets.json file.
 VIEW_ID = '125411210'
+M_ALL = '124911265'
+PC_ALL= '125394249'
+M_US = '125501241'
+PC_US = '122769400'
+M_FR = '125474948'
+PC_FR = '124898271'
+MPWES = '174280939'
+MES = '125492845'
 
-def get_report(analytics):
+def get_report(analytics,startdate,enddate):
+    
 # Use the Analytics Service Object to query the Analytics Reporting API V4.
-  return analytics.reports().batchGet(
+
+ return analytics.reports().batchGet(
       body={
          "reportRequests":
           [
             {
-              "viewId": VIEW_ID,
+              "viewId": M_US,
               "dateRanges":
-              [{"startDate": "2018-08-27",
-                  "endDate": "2018-08-29"}],
+              [{"startDate": startdate,
+                  "endDate": enddate}],
               "metrics":
-              [{"expression": "ga:users"}],
+              [{"expression": "ga:transactions"
+                }],
               "dimensions":
-              [{"name": "ga:browser"}],
-              
+              [{"name": "ga:eventAction"}],
+              "dimensionFilterClauses": [{
+              "filters": [{"dimensionName": "ga:eventAction",
+              "expressions": ["Register - Other"]
+              }]
+          }]
             }
           ]
 
       }
-  ).execute()
-    
-def initialize_analyticsreporting():
-  """Initializes the analyticsreporting service object.
+  ).execute()  
 
-  Returns:
-    analytics an authorized analyticsreporting service object.
-  """
+def initialize_analyticsreporting():
+
 # Parse command-line arguments.
   parser = argparse.ArgumentParser(
       formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -69,9 +81,6 @@ def initialize_analyticsreporting():
   return analytics
 
 
-
-
-
 def print_response(response):
   """Parses and prints the Analytics Reporting API V4 response"""
 
@@ -84,22 +93,44 @@ def print_response(response):
     for row in rows:
       dimensions = row.get('dimensions', [])
       dateRangeValues = row.get('metrics', [])
-
-      for header, dimension in zip(dimensionHeaders, dimensions):
-        print (header + ',' + dimension)
+      
+      #for header, dimension in zip(dimensionHeaders, dimensions):
+         # print (header + ',' + dimension)
 
       for i, values in enumerate(dateRangeValues):
         #print ('Date range (' + str(i) + ')')
         for metricHeader, value in zip(metricHeaders, values.get('values')):
-          print (metricHeader.get('name') + ',' + value)
+          print (value)
+          #print (metricHeader.get('name') +'\t'+ value)
+          
     #return header,dimension,metricHeader.get('name'),value
+    return metricHeader.get('name'),value
+
+def antianshuchu():
+    i=datetime.datetime(2018, 7, 30)
+    a=datetime.datetime(2018, 8, 26)+datetime.timedelta(days =+1)
+    j=i
+    print('startdate:'+i.strftime('%Y-%m-%d'))
+    
+    while i!=a :
+        startdate=j
+        enddate=j
+        analytics = initialize_analyticsreporting()
+        response = get_report(analytics,startdate.strftime('%Y-%m-%d'),enddate.strftime('%Y-%m-%d'))
+        j=i+datetime.timedelta(days =+1) 
+        i=j
+        #print(j)
+        print_response(response)
+    print('enddate:'+i.strftime('%Y-%m-%d'))    
+def buantian():
+    startdate=datetime.datetime(2018, 7, 30)
+    enddate=datetime.datetime(2018, 7, 30)
+    analytics = initialize_analyticsreporting()
+    response = get_report(analytics,startdate.strftime('%Y-%m-%d'),enddate.strftime('%Y-%m-%d'))
+    print_response(response)
 
 def main():
-
-  analytics = initialize_analyticsreporting()
-  response = get_report(analytics)
-  print_response(response)
-
-
+    antianshuchu()
+    #buantian()
 if __name__ == '__main__':
   main()
