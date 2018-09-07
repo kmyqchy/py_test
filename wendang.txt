@@ -1,0 +1,5 @@
+用户数：users
+事件操作：eventAction
+交易次数，transactions
+注意：大小写不同
+收入：Revenue

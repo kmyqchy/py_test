@@ -1,3 +1,6 @@
-import ttest
+#import ttest
 
-1231231
+a="a123fa"
+#data=dict(source=a)
+data = {'source':a}
+print(data['source'])

@@ -6,8 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
-KEY_FILE_LOCATION = os.path.abspath("C:\\analytics-shein-d1b33d52213e.json")
-VIEW_ID = 158888435
+KEY_FILE_LOCATION = os.path.abspath("C:\\client_secrets.json")
+VIEW_ID = '158888435'
 
 
 def initialize_analyticsreporting():

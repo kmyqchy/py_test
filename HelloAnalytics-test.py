@@ -8,6 +8,7 @@ from oauth2client import client
 from oauth2client import file
 from oauth2client import tools
 from _datetime import date
+from wsgiref import headers
 
 
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
@@ -106,22 +107,29 @@ def print_response(response):
     dimensionHeaders = columnHeader.get('dimensions', [])
     metricHeaders = columnHeader.get('metricHeader', {}).get('metricHeaderEntries', [])
     rows = report.get('data', {}).get('rows', [])
+    #print(rows)
     
-    for row in rows:
+    for row in rows:       
       dimensions = row.get('dimensions', [])
       dateRangeValues = row.get('metrics', [])
-    
+      #print(row)
+
+      headers = []
       for header, dimension in zip(dimensionHeaders, dimensions):
-         print (header + ':' + dimension)
+         headers.append(header)
+         
+      #print ('数组：'+headers[1]) 
 
       for i, values in enumerate(dateRangeValues):
         #print ('Date range (' + str(i) + ')')
         for metricHeader, value in zip(metricHeaders, values.get('values')):
-         #print (value)
-         print (metricHeader.get('name') +'\t'+ value)
+          #print (value)
+             print (metricHeader.get('name') +'\t'+ value)
           
-    return header,dimension,metricHeader.get('name'),value
-   #return metricHeader.get('name'),value
+   
+          
+    return headers,dimension,metricHeader.get('name'),value
+   # return metricHeader.get('name'),value
 
 
 def antianshuchu():
@@ -147,6 +155,7 @@ def buantian():
     analytics = initialize_analyticsreporting()
     response = get_report(analytics,startdate.strftime('%Y-%m-%d'),enddate.strftime('%Y-%m-%d'))
     print_response(response)
+    
 
 def main():
     #antianshuchu()
